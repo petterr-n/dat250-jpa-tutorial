@@ -9,18 +9,43 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String street;
+    private Integer number;
+
+    @ManyToMany
+    private Collection<Customer> customers;
+
+    public Address(Collection<Customer> customers, Integer number, String street) {
+        this.customers = customers;
+        this.number = number;
+        this.street = street;
+    }
+
+    public Address() {
+
+    }
+
     public String getStreet() {
-        // TODO: implement method!
-        return null;
+        return street;
     }
 
     public Integer getNumber() {
-        // TODO: implement method!
-        return null;
+        return number;
     }
 
     public Collection<Customer> getOwners() {
-        // TODO: implement method!
-        return null;
+        return customers;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public void setCustomers(Collection<Customer> customers) {
+        this.customers = customers;
     }
 }
